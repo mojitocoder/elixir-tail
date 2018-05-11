@@ -24,7 +24,7 @@ defmodule Tail.Mixfile do
   # Type `mix help compile.app` for more information
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: [:logger, :kafka_ex, :snappy]
     ]
   end
 
@@ -38,7 +38,13 @@ defmodule Tail.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    [{:earmark, "~> 0.1", only: :dev}, {:ex_doc, "~> 0.7", only: :dev}]
+    [
+      {:kafka_ex, "~> 0.8.2"},
+      {:snappy, git: "https://github.com/fdmanana/snappy-erlang-nif"},
+      {:poison, "~> 3.1"},
+      {:earmark, "~> 0.1", only: :dev},
+      {:ex_doc, "~> 0.7", only: :dev}
+    ]
   end
 
   defp description do
